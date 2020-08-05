@@ -14,7 +14,7 @@ def get_options():
                         help="Number of days to use for running average (default: 7)")
     parser.add_argument('--state', '-s', type=str,
                         help="The state data to display (e.g., ID for Idaho); if not provided the US data is shown.")
-    parser.add_argument('--start-positive-number', type=int, default=1000,
+    parser.add_argument('--positive-start', type=int, default=1000,
                         help="Number of positive cases considered for starting the plots")
     return parser.parse_args()
 
@@ -32,7 +32,7 @@ def create_graphs(opt):
     df = pandas.read_csv(url)
 
     # Compute the indices to plot
-    index = df['positive'] > opt.start_positive_number
+    index = df['positive'] > opt.positive_start
     df = df[index]
 
     # Add the running averages and rate calculations
