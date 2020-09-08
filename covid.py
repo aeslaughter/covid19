@@ -71,10 +71,10 @@ def create_graphs(opt):
     axes[1,0].legend()
 
     # DEATH RATE
-    axes[1,1].plot_date(date, df['death_rate_avg'], 'k-', label='Death Rate ({}-day avg.)'.format(opt.average))
+    axes[1,1].plot_date(date, df['death_rate_avg'], 'k-', label='Case Fatality Rate ({}-day avg.)'.format(opt.average))
     axes[1,1].bar(date, df['death_rate'], label='death Rate')
-    axes[1,1].set_title('{} COVID-19 Death Rate\n{}'.format(prefix, url))
-    axes[1,1].set_ylabel('Death Rate in % (Deaths : Positive Tests)')
+    axes[1,1].set_title('{} COVID-19 Case Fatality Rate\n{}'.format(prefix, url))
+    axes[1,1].set_ylabel('Case Fatality Rate in % (Deaths : Positive Tests)')
     axes[1,1].legend()
 
     # Setup time axes and gird marks
@@ -86,7 +86,7 @@ def create_graphs(opt):
     for row in axes:
         for ax in row:
             ax.set_xticks(xticks)
-            ax.set_xticks([start + datetime.timedelta(days=i) for i in range(7*wks)], minor=True)
+            #ax.set_xticks([start + datetime.timedelta(days=i) for i in range(7*wks)], minor=True)
             ax.set_xticklabels(xtick_labels, rotation='vertical')
             ax.grid(which='both', axis='both')
             ax.grid(which='minor', axis='both', linewidth=1, color=[0.9]*3)
